@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dog-breeds-api"
+version = "1.0.0"
+description = "A robust FastAPI CRUD API for managing dog breed data."
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [
+  {name = "Joseph Adogeri"}
+]
+keywords = ["fastapi", "pydantic", "crud", "json", "dogs"]
+
+# Core dependencies (replaces requirements.txt)
+dependencies = [
+    "fastapi>=0.100.0",
+    "pydantic>=2.0.0",
+    "uvicorn[standard]>=0.20.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "black",
+    "ruff",
+    "httpx"
+]
+
+[project.urls]
+Homepage = "https://github.com"
+
+[project.scripts]
+# Run 'start-dog-api' in terminal to launch the app
+start-dog-api = "main:app"
+
+[tool.setuptools.packages.find]
+where = ["."]
+
+[tool.black]
+line-length = 88
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

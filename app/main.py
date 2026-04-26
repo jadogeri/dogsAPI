@@ -35,7 +35,8 @@ class DogBreed(BaseModel):
 # --- Helper Functions ---
 
 def load_data() -> List[dict]:
-    if not os.path.exists("dogs.json"):
+    # CHANGE: Use JSON_FILE variable instead of "dogs.json"
+    if not os.path.exists(JSON_FILE): 
         return []
     with open(JSON_FILE, "r") as f:
         try:
@@ -44,7 +45,8 @@ def load_data() -> List[dict]:
             return []
 
 def save_data(data: List[dict]):
-    with open("dogs.json", "w") as f:
+    # CHANGE: Use the variable JSON_FILE, not the string "dogs.json"
+    with open(JSON_FILE, "w") as f:
         json.dump(data, f, indent=4)
 
 # --- Endpoints ---
