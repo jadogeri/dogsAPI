@@ -1,3 +1,17 @@
+"""
+Dog Breed Testing Module
+-----------------------
+Description: Unit tests for the Dog Breed API using Pytest and TestClient.
+            Includes automated mocking of the JSON persistence layer.
+
+Author: Joseph Adogeri
+Version: 1.0.0
+Since: 2026-04-26
+File: test_dogs.py
+License: MIT
+"""
+
+
 import json
 import pytest
 from fastapi.testclient import TestClient
