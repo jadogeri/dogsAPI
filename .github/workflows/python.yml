@@ -30,4 +30,4 @@ jobs:
     - name: Test with pytest
       run: |
         # Set PYTHONPATH to root so pytest can import main.py
-        PYTHONPATH=. pytest app/test_dogs.py
+        PYTHONPATH=. pytest -c /dev/null app/test_dogs.py

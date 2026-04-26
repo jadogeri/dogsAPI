@@ -61,6 +61,7 @@ def save_data(data: List[dict]):
     # CHANGE: Use the variable JSON_FILE, not the string "dogs.json"
     with open(JSON_FILE, "w") as f:
         json.dump(data, f, indent=4)
+        
 
 # --- Endpoints ---
 
