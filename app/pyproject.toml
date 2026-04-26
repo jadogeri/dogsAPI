@@ -9,10 +9,7 @@ description = "A robust FastAPI CRUD API for managing dog breed data."
 readme = "README.md"
 requires-python = ">=3.9"
 license = {text = "MIT"}
-authors = [
-  {name = "Joseph Adogeri"}
-]
-keywords = ["fastapi", "pydantic", "crud", "json", "dogs"]
+authors = [{name = "Joseph Adogeri"}]
 
 dependencies = [
     "fastapi>=0.100.0",
@@ -23,25 +20,12 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
     "pytest",
-    "black",
-    "ruff",
     "httpx"
 ]
-
-[project.urls]
-Homepage = "https://github.com"
-
-[project.scripts]
-start-dog-api = "main:app"
 
 [tool.setuptools.packages.find]
 where = ["."]
 
-[tool.black]
-line-length = 88
-
 [tool.pytest.ini_options]
-# FIX: Match your actual folder name
-testpaths = ["app"]
-# FIX: Allows pytest to find main.py in the root directory
+testpaths = ["tests"]
 pythonpath = ["."]
