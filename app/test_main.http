@@ -1,11 +1,37 @@
-# Test your FastAPI endpoints
+# Test your Dog Breed FastAPI endpoints
 
-GET http://127.0.0.1:8000/
+### List all breeds
+GET http://127.0.0.1:8000/breeds/
 Accept: application/json
 
-###
-
-GET http://127.0.0.1:8000/hello/User
+### Get a single breed by ID
+GET http://127.0.0.1:8000/breeds/1
 Accept: application/json
 
-###
+### Add a new breed (Create)
+POST http://127.0.0
+Content-Type: application/json
+
+{
+    "id": 264,
+    "name": "Golden Retriever",
+    "breed_group": "Sporting",
+    "life_span": "10 - 12 years",
+    "temperament": "Intelligent, Kind, Reliable, Friendly"
+}
+
+### Update an existing breed (Update)
+PUT http://127.0.0/3
+Content-Type: application/json
+
+{
+    "id": 3,
+    "name": "Golden Retriever",
+    "breed_group": "Sporting",
+    "life_span": "12 - 15 years",
+    "temperament": "Intelligent, Kind, Playful, Friendly"
+}
+
+### Remove a breed (Delete)
+DELETE http://127.0.0/3
+Accept: application/json
