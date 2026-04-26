@@ -123,8 +123,6 @@ content-type: application/json
     "url": "https://cdn2.thedogapi.com/images/BJa4kxc4X.jpg"
   }
 }
-
-
 ```
 
 ---

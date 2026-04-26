@@ -1,3 +1,16 @@
+"""
+Dog Breed Model Module
+----------------------
+Description: FastAPI and Pydantic models for Dog Breed data structures
+            and local JSON persistence logic.
+
+Author: Joseph Adogeri
+Version: 1.0.0
+Since: 2026-04-26
+File: main.py
+License: MIT
+"""
+
 import json
 import os
 from fastapi import FastAPI, HTTPException
