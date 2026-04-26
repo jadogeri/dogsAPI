@@ -30,4 +30,6 @@ jobs:
     - name: Test with pytest
       run: |
         # Set PYTHONPATH to root so pytest can import main.py
-        PYTHONPATH=. pytest -c /dev/null app/test_dogs.py
+        # Use pwd to get the full absolute path of the root
+        export PYTHONPATH=$PYTHONPATH:$(pwd)
+        pytest app/test_dogs.py
