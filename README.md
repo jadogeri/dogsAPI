@@ -144,3 +144,7 @@ While this project serves as a robust proof-of-concept, the following features a
 ├── 📄 commands.txt             # ⌨️ CLI Command reference
 └── 📄 test_main.http           # ⚡ REST Client test file
 ```
+
+## 📜 License
+
+[LICENSE](/LICENSE)
