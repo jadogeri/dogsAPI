@@ -62,6 +62,7 @@ def save_data(data: List[dict]):
     with open(JSON_FILE, "w") as f:
         json.dump(data, f, indent=4)
         
+        
 # --- Endpoints ---
 
 @app.get("/breeds", response_model=List[DogBreed])
