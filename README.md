@@ -1,9 +1,7 @@
 # 🚀 FastAPI Dog Breed CRUD API
 
 **Author:** Joseph Adogeri
-
 **Version:** 1.0
-
 **Date:** April 26, 2026
 
 <div align="center">
@@ -18,6 +16,20 @@ A high-performance Python FastAPI CRUD (Create, Read, Update, Delete) API for ma
 
 ---
 
+## 📍 Table of Contents
+
+*   [🛠 Tech Stack](#-tech-stack)
+*   [📦 Installation & Setup](#-installation--setup)
+*   [📖 API Documentation](#-api-documentation-swagger)
+*   [🛣 API Endpoints](#-api-endpoints)
+*   [🧪 Testing with REST Client](#-testing-with-rest-client)
+*   [🧠 Post-Mortem: Challenges & Learning](#-post-mortem-challenges--learning)
+*   [🚀 Future Roadmap](#-future-roadmap-scaling-the-project)
+*   [📄 Project Structure](#-project-structure)
+*   [📄 License](#-license)
+
+---
+
 ## 🛠 Tech Stack
 
 *   **Framework:** [FastAPI](https://fastapi.tiangolo.com/)
@@ -25,6 +37,7 @@ A high-performance Python FastAPI CRUD (Create, Read, Update, Delete) API for ma
 *   **Server:** [Uvicorn](https://uvicorn.org)
 *   **Package Manager:** Pip (via `pyproject.toml`)
 *   **Database:** JSON (Local File Persistence)
+*   **CI/CD:** GitHub Actions (Automated Pytest & Flake8)
 *   **API Documentation:** Interactive Swagger UI & ReDoc (Built-in)
 
 ---
@@ -35,7 +48,7 @@ Note: Command references are available in `commands.txt`
 1.  **Clone the repository:**
     ```bash
     git clone https://github.com
-    cd dog_breeds_api
+    cd dog-breed-api
     ```
 
 2.  **Create a virtual environment:**
@@ -46,8 +59,6 @@ Note: Command references are available in `commands.txt`
 
 3.  **Install project & dependencies:**
     ```bash
-    pip install .
-    # Or for development (editable mode):
     pip install -e .
     ```
 
@@ -87,43 +98,31 @@ Once the server is running, access the interactive documentation at:
 
 You can test the API endpoints using the `test_main.http` file. If you are using VS Code, install the **REST Client** extension to run these requests directly.
 
-```http
+---
 
-### Get a specific breed
-GET http://localhost:8000//1
-Accept: application/json
+## 🧠 Post-Mortem: Challenges & Learning
 
-HTTP/1.1 200 OK
-date: Sun, 26 Apr 2026 15:47:40 GMT
-server: uvicorn
-content-length: 467
-content-type: application/json
+### 🛠 Key Challenges & Solutions
+*   **Automated Testing in CI/CD:** A major hurdle was configuring GitHub Actions to recognize the project root while tests were in a sub-directory. 
+    *   *Solution:* I overcame this by modernizing the `pyproject.toml` with `pythonpath = ["."]` and utilizing `pip install -e .` to ensure the local module was correctly installed in the virtual environment during the build process.
+*   **Stateless Persistence:** Managing a local JSON file as a database requires careful handling of file I/O to prevent data corruption during concurrent writes.
+    *   *Solution:* Implemented helper functions to encapsulate the `json` serialization logic, ensuring a consistent state between the API memory and the physical file.
 
-{
-  "id": 1,
-  "name": "Affenpinscher",
-  "weight": {
-    "imperial": "6 - 13",
-    "metric": "3 - 6"
-  },
-  "height": {
-    "imperial": "9 - 11.5",
-    "metric": "23 - 29"
-  },
-  "bred_for": "Small rodent hunting, lapdog",
-  "breed_group": "Toy",
-  "life_span": "10 - 12 years",
-  "temperament": "Stubborn, Curious, Playful, Adventurous, Active, Fun-loving",
-  "origin": "Germany, France",
-  "reference_image_id": "BJa4kxc4X",
-  "image": {
-    "id": "BJa4kxc4X",
-    "width": 1600,
-    "height": 1199,
-    "url": "https://cdn2.thedogapi.com/images/BJa4kxc4X.jpg"
-  }
-}
-```
+### 🎓 Lessons Learned
+*   **Project Architecture:** I gained a deep understanding of the standard Python project layout and how configuration files like `pyproject.toml` orchestrate the development environment.
+*   **FastAPI Ecosystem:** I mastered using Pydantic for request validation and how to leverage FastAPI's dependency injection for cleaner code.
+*   **CI/CD Workflows:** I learned how to automate quality assurance using GitHub Actions, ensuring that every push meets linting and testing standards.
+
+---
+
+## 🚀 Future Roadmap: Scaling the Project
+
+While this project serves as a robust proof-of-concept, the following features are planned for future iterations to make it production-ready:
+
+1.  **Relational Database Integration:** Replace the local JSON persistence with **PostgreSQL** using **SQLAlchemy ORM**. This will allow for complex queries, better data integrity, and scalability.
+2.  **Authentication & Authorization:** Implement **OAuth2 with JWT tokens** to secure the `POST`, `PUT`, and `DELETE` endpoints.
+3.  **Containerization:** Add a `Dockerfile` and `docker-compose.yml` to ensure the API runs consistently across different deployment environments.
+4.  **Async Database Drivers:** Transition to `asyncpg` to take full advantage of FastAPI’s asynchronous capabilities for high-concurrency performance.
 
 ---
 
