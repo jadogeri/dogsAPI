@@ -14,7 +14,6 @@ authors = [
 ]
 keywords = ["fastapi", "pydantic", "crud", "json", "dogs"]
 
-# Core dependencies (replaces requirements.txt)
 dependencies = [
     "fastapi>=0.100.0",
     "pydantic>=2.0.0",
@@ -33,7 +32,6 @@ dev = [
 Homepage = "https://github.com"
 
 [project.scripts]
-# Run 'start-dog-api' in terminal to launch the app
 start-dog-api = "main:app"
 
 [tool.setuptools.packages.find]
@@ -43,4 +41,7 @@ where = ["."]
 line-length = 88
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
+# FIX: Match your actual folder name
+testpaths = ["app"]
+# FIX: Allows pytest to find main.py in the root directory
+pythonpath = ["."]

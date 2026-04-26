@@ -18,11 +18,10 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        # Added httpx, fastapi, and pydantic to ensure the test environment is complete
         pip install flake8 pytest httpx fastapi pydantic
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-        # Install the local package if pyproject.toml exists
-        if [ -f pyproject.toml ]; then pip install .; fi
+        # Install in editable mode so 'main' is recognized as a package
+        pip install -e .
 
     - name: Lint with flake8
       run: |
@@ -30,6 +29,5 @@ jobs:
 
     - name: Test with pytest
       run: |
-        # FIX: 'python -m pytest' adds the root directory to sys.path automatically.
-        # This allows app/test_dogs.py to find main.py in the root.
-        python -m pytest app/test_dogs.py
+        # With the pyproject.toml fix, a simple pytest call will now work
+        pytest
