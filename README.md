@@ -1,7 +1,9 @@
 # 🚀 FastAPI Dog Breed CRUD API
 
 **Author:** Joseph Adogeri
+<br/>
 **Version:** 1.0
+<br/>
 **Date:** April 26, 2026
 
 <div align="center">
