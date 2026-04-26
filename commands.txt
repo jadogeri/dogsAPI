@@ -1,0 +1,61 @@
+# --- ONE-TIME SETUP ---
+# Create the environment
+python -m venv .venv
+
+# Activate (Windows)
+.venv\Scripts\activate
+
+# Activate (Mac/Linux)
+source .venv/bin/activate
+
+=========================================
+1. STANDARD PIP (Using your pyproject.toml)
+=========================================
+# Install current project & dependencies
+pip install .
+
+# Install in 'Editable' mode (Changes to main.py reflect instantly)
+pip install -e .
+
+# Install with development tools (pytest, ruff, etc.)
+pip install -e ".[dev]"
+
+# Run your custom CLI command (defined in [project.scripts])
+start-dog-api
+
+# Validate your pyproject.toml structure
+pip install validate-pyproject
+validate-pyproject pyproject.toml
+
+=========================================
+2. UV (Ultra-fast & Modern)
+=========================================
+# Initialize a new project
+uv init
+
+# Add a package (Auto-updates [project.dependencies] in TOML)
+uv add fastapi
+
+# Add a dev package (Adds to [project.optional-dependencies] dev)
+uv add --dev pytest
+
+# Remove a package
+uv remove requests
+
+# Run the app directly using the script name in pyproject.toml
+uv run start-dog-api
+
+=========================================
+3. POETRY (Strict Dependency Management)
+=========================================
+# Add a package
+poetry add fastapi
+
+# Add a dev package
+poetry add pytest --group dev
+
+# Install everything defined in the TOML
+poetry install
+
+# Update all packages to latest allowed versions
+poetry update

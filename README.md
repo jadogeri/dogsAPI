@@ -131,7 +131,10 @@ content-type: application/json
 
 ```text
 📂 dog-breed-api/ (Root)
-├── 📂 .github/workflows/       # 🤖 GitHub Actions CI Configuration
+├── 📂 .github/workflows/
+│   └── 📄 python-app.yml       # 🤖 GitHub Actions CI Configuration
+├── 📂 tests/
+│   └── 📄 test_dogs.py         # 📄 Unit tests 
 ├── 📂 .venv/                   # 🐍 Python Virtual Environment
 ├── 📄 dogs.json                # 🗄️ JSON database file
 ├── 📄 main.py                  # 🚀 FastAPI entry point & CRUD logic

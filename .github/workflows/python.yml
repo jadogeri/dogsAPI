@@ -18,8 +18,9 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        # Install dev dependencies plus the local project
-        pip install flake8 pytest httpx fastapi pydantic
+        # Install the tools needed for testing
+        pip install flake8 pytest httpx fastapi pydantic uvicorn
+        # Install the project itself (now that pyproject.toml is in the root)
         pip install -e .
 
     - name: Lint with flake8
@@ -28,5 +29,5 @@ jobs:
 
     - name: Test with pytest
       run: |
-        # Pytest will now automatically use the config in pyproject.toml
+        # Pytest will automatically read the config from pyproject.toml
         pytest
